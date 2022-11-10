@@ -1,5 +1,7 @@
+import numpy as np
 import napari
 import squidpy as sq
+import vispy.color
 
 adata = sq.datasets.mibitof()
 
@@ -19,10 +21,14 @@ adata1 = adata1[:, 0:10].copy()
 adata1.obsm["obs_copy"] = adata1.obs.iloc[:, 0:5].copy()
 adata1.layers["counts"] = adata1.X.copy()
 
+green = vispy.color.Colormap([[0.0, 0.0, 0.0], [0.0, 1.0, 0.0]])
+rch, gch, bch = np.transpose(img1, (2, 0, 1))
+
 viewer = napari.Viewer()
 viewer.add_image(
-    img1,
-    rgb=True,
+    gch,
+    # rgb=True,
+    colormap=green,
     name="image1",
     metadata={"adata": adata1, "library_id": "point8"},  # adata in image layers will plot points
     scale=(1, 1),
