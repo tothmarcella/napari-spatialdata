@@ -26,8 +26,8 @@ rch, gch, bch = np.transpose(img1, (2, 0, 1))
 
 viewer = napari.Viewer()
 viewer.add_image(
-    gch,
-    # rgb=True,
+    img1,
+    rgb=True,
     colormap=green,
     name="image1",
     metadata={"adata": adata1, "library_id": "point8"},  # adata in image layers will plot points

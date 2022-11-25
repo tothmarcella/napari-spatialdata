@@ -28,7 +28,7 @@ from napari_spatialdata._utils import (
     _position_cluster_labels,
 )
 
-__all__ = ["AListWidget", "CBarWidget", "RangeSliderWidget", "ObsmIndexWidget", "CBarWidget"]
+__all__ = ["AListWidget", "CBarWidget", "RangeSliderWidget", "ObsmIndexWidget"]
 
 # label string: attribute name
 # TODO(giovp): remove since layer controls private?

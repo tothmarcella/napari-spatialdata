@@ -94,7 +94,7 @@ class QtAdataViewWidget(QWidget):
         self.layout().addWidget(self.var_points_widget)
 
         # scalebar
-        colorbar = CBarWidget()
+        colorbar = CBarWidget(cmap=self.model.cmap)
         self.slider = RangeSliderWidget(self.viewer, self.model, colorbar=colorbar)
         self._viewer.window.add_dock_widget(self.slider, area="left", name="slider")
         self._viewer.window.add_dock_widget(colorbar, area="left", name="colorbar")
@@ -136,6 +136,8 @@ class QtAdataViewWidget(QWidget):
             * self.model.scale
         )
         self.model.labels_key = layer.metadata["labels_key"] if isinstance(layer, Labels) else None
+        self.model.cmap = self.model.layer.colormap
+        # print(self.model.layer.colormap)
 
     def _get_layer(self, combo_widget: QComboBox) -> Sequence[Optional[str]]:
         adata_layers = []
